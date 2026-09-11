@@ -15,25 +15,14 @@ export interface HubFooterProps {
 
 export function HubFooter({ apps, className }: HubFooterProps) {
   return (
-    <footer
-      className={cn(
-        "border-t border-black/10 bg-bg px-4 py-8 sm:px-6",
-        className
-      )}
-    >
-      <p className="mb-4 font-heading text-sm font-semibold text-text/60">
-        Otras apps del hub
-      </p>
-      <nav className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+    <footer className={cn("tui-hub-footer", className)}>
+      <p className="tui-hub-footer__title">Otras apps del hub</p>
+      <nav className="tui-hub-footer__grid">
         {apps.map((app) => (
-          <Link
-            key={app.url}
-            href={app.url}
-            className="font-body text-sm text-text hover:text-accent-2"
-          >
+          <Link key={app.url} href={app.url} className="tui-hub-footer__link">
             {app.name}
             {app.description ? (
-              <span className="block text-xs text-text/50">
+              <span className="tui-hub-footer__link-desc">
                 {app.description}
               </span>
             ) : null}

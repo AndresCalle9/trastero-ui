@@ -19,30 +19,19 @@ export function HubHeader({
   className,
 }: HubHeaderProps) {
   return (
-    <header
-      className={cn(
-        "flex h-16 items-center justify-between border-b border-black/10 bg-bg px-4 sm:px-6",
-        className
-      )}
-    >
-      <div className="flex items-center gap-3">
-        <Link
-          href={hubUrl}
-          className="font-heading text-lg font-semibold text-text"
-        >
+    <header className={cn("tui-hub-header", className)}>
+      <div className="tui-hub-header__brand">
+        <Link href={hubUrl} className="tui-hub-header__logo-link">
           {logo ?? "Trastero"}
         </Link>
         {appName ? (
           <>
-            <span className="text-black/20">/</span>
-            <span className="font-body text-sm text-text/70">{appName}</span>
+            <span className="tui-hub-header__sep">/</span>
+            <span className="tui-hub-header__app-name">{appName}</span>
           </>
         ) : null}
       </div>
-      <Link
-        href={hubUrl}
-        className="font-body text-sm font-medium text-accent-2 hover:underline"
-      >
+      <Link href={hubUrl} className="tui-hub-header__back-link">
         Volver a Trastero
       </Link>
     </header>

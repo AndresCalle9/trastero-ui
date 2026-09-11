@@ -1,0 +1,135 @@
+/* @andrescalle9/ui — hoja de estilos standalone.
+   Se compila con Tailwind v4 en build time (no se expone como preset). La app
+   consumidora solo necesita importar el resultado, dist/styles.css, una vez
+   en su layout raíz. No requiere tailwindcss instalado ni configurado. */
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+:root {
+  --hub-bg: #FAFAFA;
+  --hub-text: #1A1A1A;
+  --hub-accent: #E8A33D;
+  --hub-accent-2: #2E6E5C;
+  --hub-font-heading: "Rubik", ui-sans-serif, system-ui, sans-serif;
+  --hub-font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+.tui-btn {
+  @apply inline-flex items-center justify-center rounded-lg font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  font-family: var(--hub-font-body);
+}
+
+.tui-btn--primary {
+  background-color: var(--hub-accent);
+  color: var(--hub-text);
+}
+.tui-btn--primary:hover {
+  filter: brightness(0.95);
+}
+.tui-btn--primary:active {
+  filter: brightness(0.9);
+}
+
+.tui-btn--secondary {
+  background-color: var(--hub-accent-2);
+  color: var(--hub-bg);
+}
+.tui-btn--secondary:hover {
+  filter: brightness(1.1);
+}
+.tui-btn--secondary:active {
+  filter: brightness(0.95);
+}
+
+.tui-btn--ghost {
+  background-color: transparent;
+  color: var(--hub-text);
+}
+.tui-btn--ghost:hover {
+  background-color: rgb(0 0 0 / 5%);
+}
+.tui-btn--ghost:active {
+  background-color: rgb(0 0 0 / 10%);
+}
+
+.tui-btn--sm {
+  @apply h-8 px-3 text-sm;
+}
+.tui-btn--md {
+  @apply h-10 px-4 text-base;
+}
+.tui-btn--lg {
+  @apply h-12 px-6 text-lg;
+}
+
+.tui-card {
+  @apply rounded-xl border p-6 shadow-sm;
+  background-color: var(--hub-bg);
+  border-color: rgb(0 0 0 / 10%);
+}
+
+.tui-hub-header {
+  @apply flex h-16 items-center justify-between px-4 sm:px-6;
+  background-color: var(--hub-bg);
+  border-bottom: 1px solid rgb(0 0 0 / 10%);
+}
+
+.tui-hub-header__brand {
+  @apply flex items-center gap-3;
+}
+
+.tui-hub-header__logo-link {
+  @apply text-lg font-semibold;
+  font-family: var(--hub-font-heading);
+  color: var(--hub-text);
+}
+
+.tui-hub-header__sep {
+  color: rgb(0 0 0 / 20%);
+}
+
+.tui-hub-header__app-name {
+  @apply text-sm;
+  font-family: var(--hub-font-body);
+  color: rgb(from var(--hub-text) r g b / 70%);
+}
+
+.tui-hub-header__back-link {
+  @apply text-sm font-medium;
+  font-family: var(--hub-font-body);
+  color: var(--hub-accent-2);
+}
+.tui-hub-header__back-link:hover {
+  text-decoration: underline;
+}
+
+.tui-hub-footer {
+  @apply px-4 py-8 sm:px-6;
+  background-color: var(--hub-bg);
+  border-top: 1px solid rgb(0 0 0 / 10%);
+}
+
+.tui-hub-footer__title {
+  @apply mb-4 text-sm font-semibold;
+  font-family: var(--hub-font-heading);
+  color: rgb(from var(--hub-text) r g b / 60%);
+}
+
+.tui-hub-footer__grid {
+  @apply grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4;
+}
+
+.tui-hub-footer__link {
+  @apply text-sm;
+  font-family: var(--hub-font-body);
+  color: var(--hub-text);
+}
+.tui-hub-footer__link:hover {
+  color: var(--hub-accent-2);
+}
+
+.tui-hub-footer__link-desc {
+  @apply block text-xs;
+  color: rgb(from var(--hub-text) r g b / 50%);
+}
