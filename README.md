@@ -1,9 +1,10 @@
 @andrescalle9/ui
 
-Paquete de UI compartido para las apps del hub Trastero. Provee design tokens, componentes base y el header/footer de cross-navegación entre apps.
+Paquete de UI compartido para las apps del hub Trastero. Provee design tokens (vía CSS custom properties), componentes base y el header/footer de cross-navegación entre apps.
 
 Qué contiene
-Design tokens (colores, tipografía, spacing) como preset de Tailwind.
+Hoja de estilos standalone (dist/styles.css) con los estilos de los componentes, ya compilada — no depende de que la app host tenga Tailwind instalado.
+Design tokens como CSS custom properties: --hub-bg, --hub-text, --hub-accent, --hub-accent-2, --hub-font-heading, --hub-font-body.
 Componentes base: Button, Card.
 HubHeader: logo Trastero + nombre de la app actual + link "Volver a Trastero".
 HubFooter: grid de links a otras apps del hub (recibe la lista como prop).
@@ -15,21 +16,31 @@ Instalación
 bash
 npm install @andrescalle9/ui
 
-Peer dependencies: next@^14, tailwindcss@^3.
+Peer dependencies: next@^14 || ^15, react@^18 || ^19, react-dom@^18 || ^19. No requiere tailwindcss — el paquete no depende del scanner de utilidades de la app host.
 
-Tailwind
+Estilos
 
-Extiende tu tailwind.config con el preset del paquete:
+Importa la hoja de estilos compilada una sola vez en el layout raíz de la app:
 
-js
-// tailwind.config.js
-module.exports = {
-  presets: [require("@andrescalle9/ui/tailwind-preset")],
-  content: [
-    "./app/**/*.{ts,tsx}",
-    "./node_modules/@andrescalle9/ui/dist/**/*.js",
-  ],
-};
+tsx
+// app/layout.tsx
+import "@andrescalle9/ui/styles.css";
+
+Personalizar el theming
+
+Los componentes leen sus colores y tipografías de CSS custom properties con valores por defecto. Para adaptarlos a una app concreta, sobreescríbelas en tu propio :root — sin tocar ninguna config de Tailwind:
+
+css
+/* app/globals.css, después de importar @andrescalle9/ui/styles.css */
+:root {
+  --hub-bg: #0B0B0B;
+  --hub-text: #F5F5F5;
+  --hub-accent: #E8A33D;
+  --hub-accent-2: #2E6E5C;
+  --hub-font-heading: "Rubik", sans-serif;
+  --hub-font-body: "Inter", sans-serif;
+}
+
 Uso
 tsx
 import { HubHeader, HubFooter } from "@andrescalle9/ui";
@@ -52,7 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 Desarrollo
 bash
 npm install
-npm run build   # tsup -> dist/ (.js + .d.ts)
+npm run build   # tsup -> dist/*.js + .d.ts, y tailwindcss -> dist/styles.css
 Publicar una nueva versión
 bash
 npm version patch   # o minor / major
