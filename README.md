@@ -16,7 +16,7 @@ Instalación
 bash
 npm install @andrescalle9/ui
 
-Peer dependencies: next@^14 || ^15, react@^18 || ^19, react-dom@^18 || ^19. No requiere tailwindcss — el paquete no depende del scanner de utilidades de la app host.
+Peer dependencies: next@>=14, react@>=18, react-dom@>=18. No requiere tailwindcss — el paquete no depende del scanner de utilidades de la app host.
 
 Estilos
 
