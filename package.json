@@ -1,6 +1,6 @@
 {
   "name": "@andrescalle9/ui",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "UI compartida (design tokens, componentes base y navegación cross-app) para el hub Trastero.",
   "license": "MIT",
   "author": "Andrés Calle <acalle@salvahealth.co>",
